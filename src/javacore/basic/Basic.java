@@ -15,7 +15,7 @@ public class Basic {
 
     public static void main(String[] args) {
         Basic basic = new Basic();
-        // добавим несколко пользователей в базу
+        // добавим несколько пользователей в базу
         names[0] = "holdy";
         phoneNumbers[0] = "234-23-55";
         names[1] = "tonny";
@@ -28,7 +28,7 @@ public class Basic {
         phoneNumbers[4] = "266-12-82";
         names[5] = "shaun";
         phoneNumbers[5] = "245-11-29";
-        currentAmount = 6;// улучшить
+        currentAmount = names.length;
 
         Scanner scanner = new Scanner(System.in);
         String option;
