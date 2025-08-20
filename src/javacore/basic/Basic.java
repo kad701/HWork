@@ -17,17 +17,17 @@ public class Basic {
         Basic basic = new Basic();
         // добавим несколько пользователей в базу
         names[0] = "holdy";
-        phoneNumbers[0] = "234-23-55";
+        phoneNumbers[0] = "2342355";
         names[1] = "tonny";
-        phoneNumbers[1] = "231-23-15";
+        phoneNumbers[1] = "2312315";
         names[2] = "bobby";
-        phoneNumbers[2] = "242-42-65";
+        phoneNumbers[2] = "2424265";
         names[3] = "annie";
-        phoneNumbers[3] = "211-14-15";
+        phoneNumbers[3] = "2111475";
         names[4] = "tory";
-        phoneNumbers[4] = "266-12-82";
+        phoneNumbers[4] = "2661282";
         names[5] = "shaun";
-        phoneNumbers[5] = "245-11-29";
+        phoneNumbers[5] = "2451129";
         for (int i = 0; i < names.length; i++) {
             if (names[i] != null)
                 currentAmount++;
