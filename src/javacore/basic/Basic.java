@@ -11,7 +11,7 @@ public class Basic {
     // Массив для хранения номеров телефонов контактов
     private static final String[] phoneNumbers = new String[MAX_CONTACTS];
     //текущее количесто записей справочнике
-    private static int currentAmount;
+    private static int currentAmount=0;
 
     public static void main(String[] args) {
         Basic basic = new Basic();
@@ -28,8 +28,12 @@ public class Basic {
         phoneNumbers[4] = "266-12-82";
         names[5] = "shaun";
         phoneNumbers[5] = "245-11-29";
-        currentAmount = names.length;
+        for (int i = 0; i < names.length; i++) {
+            if(names[i]!=null)
+                currentAmount++;
+        }
 
+        System.out.println(currentAmount);
         Scanner scanner = new Scanner(System.in);
         String option;
         //Основное меню
@@ -43,31 +47,44 @@ public class Basic {
             option =scanner.nextLine();
             System.out.println("-------------");
             System.out.println("Вы выбрали пункт "+option+" ");
-            if(option.equalsIgnoreCase("1"))
+            if(option.equalsIgnoreCase("1")){
                 basic.addContacts(scanner);
-            if(option.equalsIgnoreCase("2"))
+            continue;
+            }
+            if(option.equalsIgnoreCase("2")){
                 basic.showContacts();
-            if(option.equalsIgnoreCase("3"))
+                continue;
+            }
+            if(option.equalsIgnoreCase("3")){
                 basic.findContacts(scanner);
-            if(option.equalsIgnoreCase("4"))
+            continue;
+            }
+            if(option.equalsIgnoreCase("4")){
                 basic.deleteContact(scanner);
+                continue;
+            }
             else System.out.println("Выбранный вами пункт меню отсутствует, выберите еще раз");
         }
         while (!option.equals("5"));
         System.out.println("Вы закончили работу");
     }
     // Реализация пунктов меню
+    // ("20934".matches("-?[0-9]+"));
     public void addContacts(Scanner scanner) {
         System.out.println("Введите имя нового абонента ");
         String name = scanner.nextLine();
         System.out.println("Введите имя телефон нового абонента ");
         String phoneNumber = scanner.nextLine();
-        if (currentAmount < MAX_CONTACTS-1) {
-            currentAmount = currentAmount + 1;
-            names[currentAmount - 1] = name;
-            phoneNumbers[currentAmount - 1] = phoneNumber;
-        }
-        else System.out.println("Справочник заполнен, удалите контакт чтобы добавить новый");
+        if(phoneNumber.matches("-?[0-9]+")){
+        if((!name.equals(""))&&(!phoneNumber.equals(""))){
+            if (currentAmount < MAX_CONTACTS - 1) {
+                currentAmount = currentAmount + 1;
+                names[currentAmount - 1] = name;
+                phoneNumbers[currentAmount - 1] = phoneNumber;
+            } else System.out.println("Справочник заполнен, удалите контакт чтобы добавить новый");
+        } else System.out.println("Вы не ввели имя или номер абонента, новый абонент не добавлен");}
+        else System.out.println("Формат номера не верный,номер должен содержать только цифры, абонент не добавлен");
+
     } // добавить контакт
 
     public void showContacts() {
@@ -93,7 +110,7 @@ public class Basic {
                     break;
                 }
                 if (i == currentAmount - 1)
-                    System.out.println("нет контактов с этим именем");
+                    System.out.println("нет контактов ");
             }
         }
         if (option.equalsIgnoreCase("2")) {
@@ -124,6 +141,7 @@ public class Basic {
                 names[i] = null;
                 phoneNumbers[i] = null;
                 currentAmount--;
+                System.out.println("Контакт "+name+" найден и удален");
                 for (int j = i; j < currentAmount+1; j++) {
                     String tempName = names[j + 1];
                     String tempPhoneNumber=phoneNumbers[j+1];
@@ -141,5 +159,5 @@ public class Basic {
             else if(i==currentAmount-1)
                 System.out.println("контакт не найден");
         }
-    }
+    }// удаление контакта по имени
 }
