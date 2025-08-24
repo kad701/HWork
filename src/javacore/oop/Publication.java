@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public abstract class Publication implements Printable {
     private String title;
-    private String Author;
+    private String author;
     private int year;
     private static int publicationCount = 0;
 
     public Publication(String title, String author, int year) {
         this.title = title;
-        Author = author;
+        this.author = author;
         this.year = year;
     }
 
@@ -26,11 +26,11 @@ public abstract class Publication implements Printable {
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        author = author;
     }
 
     public int getYear() {
@@ -46,19 +46,19 @@ public abstract class Publication implements Printable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publication that = (Publication) o;
-        return year == that.year && Objects.equals(title, that.title) && Objects.equals(Author, that.Author);
+        return year == that.year && Objects.equals(title, that.title) && Objects.equals(author, that.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, Author, year);
+        return Objects.hash(title, author, year);
     }
 
     @Override
     public String toString() {
         return "{" +
                 "title='" + title + '\'' +
-                ", Author='" + Author + '\'' +
+                ", author='" + author + '\'' +
                 ", year=" + year +
                 '}';
     }

@@ -19,7 +19,6 @@ public class Main {
         publicationList.add(new Book("The Last Kingdom", "Bernard Cornuwell", 2009, "234571"));
         publicationList.add(new Magazine("Vogue", "Farmers Journalist", 1989, 45678));
         publicationList.add(new Magazine("Farmers", "Farmers Journalist", 1970, 2314));
-        //   Journalist Vogue
         Library library = new Library(publicationList);
         Scanner scanner = new Scanner(System.in);
         String option = null;
@@ -31,11 +30,11 @@ public class Main {
             System.out.println("Введите 4 Вывести общее количество публикаций");//
             System.out.println("Введите 5 Удалить публикацию");
             System.out.println("Введите 0 Завершить работу");//
-            //удалить публикацию
             option = scanner.nextLine();
             switch (option) {
                 case "1":
-                    library.addPublicatoin(scanner);
+                    Publication publication=new InputPublication().inputAddInfo();
+                    library.addPublicatoin(publication);
                     break;
                 case "2":
                     library.showPublications();
@@ -49,13 +48,15 @@ public class Main {
                     System.out.println("Общее количество публикаций : = " + Library.getPublicationListSize());
                     break;
                 case "5":
-                    library.deletePublicationByAuthorAndTitle(scanner);
+                    Publication pub=new InputPublication().inputDeleteInfo();
+                    library.deletePublicationByAuthorAndTitle(pub);
                     break;
+                case "0":
+                    System.out.println("Программа завершена");
+                    break;
+                default:
+                    System.out.println("Вы выбрали не верную опцию, повторите ввод");
             }
-
-            if(!((option.equals("1"))||(option.equals("2"))||(option.equals("3"))||(option.equals("4"))||(option.equals("0"))))
-
-                System.out.println("Вы выбрали не верную опцию, повторите ввод");
 
         }
         while (!option.equals("0"));
