@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="005e55b5-02b7-4fdd-beef-48a417d61102" name="Changes" comment="OOP version 2 commit">
+    <list default="true" id="005e55b5-02b7-4fdd-beef-48a417d61102" name="Changes" comment="OOP version 4 commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javacore/oop/InputPublication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javacore/oop/InputPublication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javacore/oop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javacore/oop/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javacore/oop/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javacore/oop/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javacore/oop/Newspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javacore/oop/Newspaper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/javacore/oop/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/javacore/oop/Publication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,12 +73,30 @@
       <option name="project" value="LOCAL" />
       <updated>1756065038065</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="OOP version 3 commit">
+      <option name="closed" value="true" />
+      <created>1756206489227</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756206489227</updated>
+    </task>
+    <task id="LOCAL-00004" summary="OOP version 4 commit">
+      <option name="closed" value="true" />
+      <created>1756206627700</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756206627700</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="OOP version 1 commit" />
     <MESSAGE value="OOP version 2 commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="OOP version 2 commit" />
+    <MESSAGE value="OOP version 3 commit" />
+    <MESSAGE value="OOP version 4 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="OOP version 4 commit" />
   </component>
 </project>
