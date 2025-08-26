@@ -9,11 +9,6 @@ import java.util.regex.Pattern;
 public class Library {
     private static List<Publication> publicationList;
 
-    public static int getPublicationListSize(){
-        return publicationList.size();
-    }
-
-
 
     public Library(List<Publication> publicationList) {
         this.publicationList = publicationList;
@@ -45,7 +40,7 @@ public class Library {
         return publicationList;
     }
 
-    public void deletePublicationByAuthorAndTitle(Publication publication){
+    public void deletePublicationByAuthorAndTitle(Publication publication) {
 
         publicationList.remove(publication);
 

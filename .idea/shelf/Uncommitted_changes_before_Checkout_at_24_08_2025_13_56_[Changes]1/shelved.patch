@@ -1,0 +1,499 @@
+Index: src/javacore/oop/Magazine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Magazine.java b/src/javacore/oop/Magazine.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Magazine.java	
+@@ -0,0 +1,58 @@
++package javacore.oop;
++
++import java.util.Objects;
++
++public class Magazine extends Publication implements Printable {
++    private int issueNumber;
++
++    public Magazine(String title, String author, int year, int issueNumber) {
++        super(title, author, year);
++        this.issueNumber = issueNumber;
++    }
++
++    @Override
++    public void printDetails() {
++        System.out.println("Magazine detail " + issueNumber + "  " + super.toString());
++    }
++
++
++    @Override
++    public String getType() {
++        return "Magazine";
++    }
++
++    @Override
++    public String toString() {
++        return "MAGAZINE{" +
++                "issueNumber= " + issueNumber +
++                ", title='" + super.getTitle() + '\'' +
++                ", Author='" + super.getAuthor() + '\'' +
++                ", year=" + super.getYear() +
++                "} ";
++    }
++
++    public int getIssueNumber() {
++        return issueNumber;
++    }
++
++    public void setIssueNumber(int issueNumber) {
++        this.issueNumber = issueNumber;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++        if (!super.equals(o)) return false;
++        Magazine magazine = (Magazine) o;
++        return issueNumber == magazine.issueNumber;
++    }
++
++    @Override
++    public int hashCode() {
++        return Objects.hash(super.hashCode(), issueNumber);
++    }
++}
++
++
++
+Index: src/javacore/oop/Book.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Book.java b/src/javacore/oop/Book.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Book.java	
+@@ -0,0 +1,55 @@
++package javacore.oop;
++
++import java.util.Objects;
++
++public class Book extends Publication implements Printable {
++    private String isbn;
++
++    public Book(String title, String author, int year, String isbn) {
++        super(title, author, year);
++        this.isbn = isbn;
++    }
++
++    public String getIsbn() {
++        return isbn;
++    }
++
++    public void setIsbn(String isbn) {
++        this.isbn = isbn;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++        if (!super.equals(o)) return false;
++        Book book = (Book) o;
++        return Objects.equals(isbn, book.isbn);
++    }
++
++    @Override
++    public int hashCode() {
++        return Objects.hash(super.hashCode(), isbn);
++    }
++
++    @Override
++    public String toString() {
++        return "BOOK{" +
++                "isbn='" + isbn + '\'' +
++                ", title='" + super.getTitle() + '\'' +
++                ", Author='" + super.getAuthor() + '\'' +
++                ", year=" + super.getYear() +
++                "} ";
++    }
++
++    @Override
++    public void printDetails() {
++        System.out.println("Book details  " + isbn + "  " + super.toString());
++
++    }
++
++    @Override
++    public String getType() {
++        return "Book";
++    }
++}
+Index: src/javacore/oop/Printable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Printable.java b/src/javacore/oop/Printable.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Printable.java	
+@@ -0,0 +1,5 @@
++package javacore.oop;
++
++public interface Printable {
++    public void printDetails();
++}
+Index: src/javacore/oop/Publication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Publication.java b/src/javacore/oop/Publication.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Publication.java	
+@@ -0,0 +1,65 @@
++package javacore.oop;
++
++import java.util.Objects;
++
++public abstract class Publication implements Printable {
++    private String title;
++    private String Author;
++    private int year;
++    private static int publicationCount = 0;
++
++    public Publication(String title, String author, int year) {
++        this.title = title;
++        Author = author;
++        this.year = year;
++    }
++
++    public abstract String getType();
++
++
++    public String getTitle() {
++        return title;
++    }
++
++    public void setTitle(String title) {
++        this.title = title;
++    }
++
++    public String getAuthor() {
++        return Author;
++    }
++
++    public void setAuthor(String author) {
++        Author = author;
++    }
++
++    public int getYear() {
++        return year;
++    }
++
++    public void setYear(int year) {
++        this.year = year;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++        Publication that = (Publication) o;
++        return year == that.year && Objects.equals(title, that.title) && Objects.equals(Author, that.Author);
++    }
++
++    @Override
++    public int hashCode() {
++        return Objects.hash(title, Author, year);
++    }
++
++    @Override
++    public String toString() {
++        return "{" +
++                "title='" + title + '\'' +
++                ", Author='" + Author + '\'' +
++                ", year=" + year +
++                '}';
++    }
++}
+Index: src/javacore/oop/Library.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Library.java b/src/javacore/oop/Library.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Library.java	
+@@ -0,0 +1,128 @@
++package javacore.oop;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Scanner;
++import java.util.regex.Matcher;
++import java.util.regex.Pattern;
++
++public class Library {
++    private static List<Publication> publicationList;
++
++    public static int getPublicationListSize(){
++        return publicationList.size();
++    }
++
++    public static int checkIfIntInput(Scanner scanner) {
++        String input = null;
++        while (!isNumber(input)) {
++            System.out.println("Необходимо ввести число");
++            input = scanner.nextLine();
++        }
++        return Integer.parseInt(input);
++
++    }
++
++    public static boolean isNumber(String input) {
++        if ((input == null) || input.trim().isEmpty())
++            return false;
++        try {
++            Integer.parseInt(input.trim());
++            return true;
++        } catch (Exception e) {
++            return false;
++        }
++    }
++
++    public Library(List<Publication> publicationList) {
++        this.publicationList = publicationList;
++    }
++
++    public void showPublications() {
++        System.out.println(publicationList);
++    }
++
++    public void addPublicatoin(Scanner scanner) {
++        String option = null;
++        do {
++            System.out.println("Что хотите добавить?");
++            System.out.println("1-Книга");
++            System.out.println("2-Журнал");
++            System.out.println("3-Газета");
++            System.out.println("4-Вернуться в предыдущее меню");
++            option = scanner.nextLine();
++            if (option.equalsIgnoreCase("1")) {
++                System.out.println("Введите название");
++                String title = scanner.nextLine();
++                System.out.println("Введите автора");
++                String author = scanner.nextLine();
++                System.out.println("Введите год");
++                int year = checkIfIntInput(scanner);
++                System.out.println("Введите isbn");
++                String isbn = scanner.nextLine();
++                Book newBook = new Book(title, author, year, isbn);
++                publicationList.add(newBook);
++                break;
++            } else if (option.equalsIgnoreCase("2")) {
++                System.out.println("Введите название");
++                String title = scanner.nextLine();
++                System.out.println("Введите автора");
++                String author = scanner.nextLine();
++                System.out.println("Введите год");
++                int year = checkIfIntInput(scanner);
++                System.out.println("Введите issueNumber");
++                int issueNumber = checkIfIntInput(scanner);
++                Magazine magazine = new Magazine(title, author, year, issueNumber);
++                publicationList.add(magazine);
++                break;
++            } else if (option.equalsIgnoreCase("3")) {
++                System.out.println("Введите название");
++                String title = scanner.nextLine();
++                System.out.println("Введите автора");
++                String author = scanner.nextLine();
++                System.out.println("Введите год");
++                int year = checkIfIntInput(scanner);
++                System.out.println("Введите publicationDay");
++                String publicationDay = scanner.nextLine();
++                Newspaper newspaper = new Newspaper(title, author, year, publicationDay);
++                publicationList.add(newspaper);
++                break;
++
++            } else if (!option.equals("4"))
++                System.out.println("Вы ввели неверную опцию");
++        }
++        while (!option.equalsIgnoreCase("4"));
++        System.out.println();
++    }
++
++    public void findPublicationByAuthor(String author) {
++        List<Publication> authorPublications = new ArrayList<>();
++
++
++        for (Publication element : publicationList) {
++            if (element.getAuthor().toLowerCase().contains(author.toLowerCase()))
++                authorPublications.add(element);
++        }
++        if (authorPublications.isEmpty())
++            System.out.println("Нет публикаций данного автора");
++        else
++            System.out.println(authorPublications);
++    }
++
++    public void deletePublicationByAuthorAndTitle(Scanner scanner){
++        System.out.println("Введите автора для удаления");
++        String author=scanner.nextLine();
++        System.out.println("Введите название публикации для удаления");
++        String title=scanner.nextLine();
++        Publication removedPublication=null;
++        for (Publication element:publicationList) {
++            if((element.getAuthor().equals(author))&&(element.getTitle().equals(title))){
++                removedPublication=  element;
++                break;
++            }
++        }
++        publicationList.remove(removedPublication);
++        System.out.println();
++    }
++
++}
+Index: src/javacore/oop/Newspaper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Newspaper.java b/src/javacore/oop/Newspaper.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Newspaper.java	
+@@ -0,0 +1,54 @@
++package javacore.oop;
++
++import java.util.Objects;
++
++public class Newspaper extends Publication implements Printable {
++    private String publicationDay;
++
++    public Newspaper(String title, String author, int year, String publicationDay) {
++        super(title, author, year);
++        this.publicationDay = publicationDay;
++    }
++
++    @Override
++    public void printDetails() {
++        System.out.println("Newspaper detail " + publicationDay + " " + super.toString());
++    }
++
++    @Override
++    public String getType() {
++        return "Newspaper";
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++        if (!super.equals(o)) return false;
++        Newspaper newspaper = (Newspaper) o;
++        return Objects.equals(publicationDay, newspaper.publicationDay);
++    }
++
++    @Override
++    public int hashCode() {
++        return Objects.hash(super.hashCode(), publicationDay);
++    }
++
++    @Override
++    public String toString() {
++        return "NEWSPAPER{" +
++                "publicationDay='" + publicationDay + '\'' +
++                ", title='" + super.getTitle() + '\'' +
++                ", Author='" + super.getAuthor() + '\'' +
++                ", year=" + super.getYear() +
++                "} ";
++    }
++
++    public String getPublicationDay() {
++        return publicationDay;
++    }
++
++    public void setPublicationDay(String publicationDay) {
++        this.publicationDay = publicationDay;
++    }
++}
+Index: src/javacore/oop/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javacore/oop/Main.java b/src/javacore/oop/Main.java
+new file mode 100644
+--- /dev/null	
++++ b/src/javacore/oop/Main.java	
+@@ -0,0 +1,64 @@
++package javacore.oop;
++
++import java.awt.*;
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Scanner;
++
++public class Main {
++    public static void main(String[] args) {
++// Добавим несколько публикаций в библиотеку
++        List<Publication> publicationList = new ArrayList<>();
++        publicationList.add(new Newspaper("The Times", "Journalists from Times", 2025,
++                "Monday"));
++        publicationList.add(new Newspaper("Fox News", "Journalists from Fox", 2025,
++                "Wednesday"));
++        publicationList.add(new Newspaper("Usa Today", "Journalists from Usa", 2025,
++                "Thursday"));
++        publicationList.add(new Book("Aivengo", "Valter Scott", 1828, "1126789"));
++        publicationList.add(new Book("The Last Kingdom", "Bernard Cornuwell", 2009, "234571"));
++        publicationList.add(new Magazine("Vogue", "Farmers Journalist", 1989, 45678));
++        publicationList.add(new Magazine("Farmers", "Farmers Journalist", 1970, 2314));
++        //   Journalist Vogue
++        Library library = new Library(publicationList);
++        Scanner scanner = new Scanner(System.in);
++        String option = null;
++        do {
++            System.out.println("МЕНЮ");
++            System.out.println("Введите 1 Добавить новую публикацию");
++            System.out.println("Введите 2 Вывести список всех публикаций");//
++            System.out.println("Введите 3 Поиск публикации по автору");//
++            System.out.println("Введите 4 Вывести общее количество публикаций");//
++            System.out.println("Введите 5 Удалить публикацию");
++            System.out.println("Введите 0 Завершить работу");//
++            //удалить публикацию
++            option = scanner.nextLine();
++            switch (option) {
++                case "1":
++                    library.addPublicatoin(scanner);
++                    break;
++                case "2":
++                    library.showPublications();
++                    break;
++                case "3":
++                    System.out.println("Введите имя автора");
++                    String name = scanner.nextLine();
++                    library.findPublicationByAuthor(name);
++                    break;
++                case "4":
++                    System.out.println("Общее количество публикаций : = " + Library.getPublicationListSize());
++                    break;
++                case "5":
++                    library.deletePublicationByAuthorAndTitle(scanner);
++                    break;
++            }
++
++            if(!((option.equals("1"))||(option.equals("2"))||(option.equals("3"))||(option.equals("4"))||(option.equals("0"))))
++
++                System.out.println("Вы выбрали не верную опцию, повторите ввод");
++
++        }
++        while (!option.equals("0"));
++
++    }
++}
